@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .inner {
+            height: 50px;
+            background-color: darkcyan;
+        }
+
+        .outer {
+            padding: 20px;
+            background-color: cornflowerblue;
+        }
+    </style>
+    <script src="../js/Vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <!--    .stop   阻止事件冒泡-->
+    <!--    <div id="outer" class="outer" @click="outerclick">-->
+    <!--        <div class="inner" id="inner" @click="innerclick">-->
+    <!--            <input type="button" value="按钮" @click.stop="btnclick">-->
+    <!--        </div>-->
+    <!--    </div>-->
+
+<!--    .prevent  阻止默认行为-->
+<!--    <div id="outer" class="outer" @click="outerclick">-->
+<!--        <div class="inner" id="inner" @click="innerclick">-->
+<!--            <input type="button" value="按钮" @click.stop="btnclick">-->
+<!--            <a href="http://www.baidu.com" @click.prevent="aclick">百度</a>-->
+<!--        </div>-->
+<!--    </div>-->
+
+<!--    .self 实现只有点击当前元素时候，才会触发事件处理函数-->
+<!--    <div id="outer" class="outer" @click="outerclick">-->
+<!--        <div class="inner" id="inner" @click.self.stop="innerclick">-->
+<!--            <input type="button" value="按钮" @click="btnclick">-->
+<!--            <a href="http://www.baidu.com" @click="aclick">百度</a>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
+
+<!--.once 只触发一次事件处理函数-->
+    <div id="outer" class="outer" @click="outerclick">
+        <div class="inner" id="inner" @click="innerclick">
+            <input type="button" value="按钮" @click.stop.once="btnclick">
+            <a href="http://www.baidu.com" @click.prevent.once="aclick">百度</a>
+        </div>
+    </div>
+</div>
+<script>
+    var vm = new Vue({
+        el: "#app",
+        data: {},
+        methods: {
+            outerclick() {
+                console.log('外侧div点击事件');
+            },
+            innerclick() {
+                console.log('内侧div点击事件');
+            },
+            btnclick() {
+                console.log('按钮点击事件');
+            },
+            aclick() {
+                console.log('a连接点击事件');
+            }
+        }
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../js/Vue.js"></script>
+</head>
+<body>
+
+<div id="app">
+    <input type="button" value="浪起来" @click="lang">
+    <input type="button" value="不许浪" @click="stop">
+
+    <h4>{{msg}}</h4>
+</div>
+
+<script>
+    var vm = new Vue({
+        el: '#app',
+        data: {
+            msg: '猥琐发育，别浪~~~！',
+            msg1: '浪起来',
+            msg2: '不许浪',
+            timeId: null
+        },
+        methods: {
+            lang() {
+                if(this.timeId != null){
+                    return;
+                }
+                this.timeId = setInterval(() => {
+                    var start = this.msg.substring(0, 1);
+                    var end = this.msg.substring(1);
+                    this.msg = end + start;
+                },300)
+
+            },
+            stop() {
+                clearInterval(this.timeId);
+                this.timeId=null;
+            }
+        }
+    });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<script>
+    var str = "http://example.com/bigscreen/foo";
+    var regex = /http:\/\/([^/]+\/)(?=.*?(bigscreen|minio))/;
+    var replacement = "https://newdomain.com/";
+
+    var newStr = str.replace(regex, replacement);
+    console.log(newStr);
+
+
+</script>
+</body>
+</html>
